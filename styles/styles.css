@@ -1,0 +1,392 @@
+/* 通用样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('../assets/images/xiaoxin.png') no-repeat center center fixed; /* 背景图片 */
+    background-size: cover; /* 背景适配屏幕 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* 隐藏类 */
+.hidden {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+/* 卡片网格 */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 每行6张牌 */
+    grid-gap: 40px; /* 调整卡片之间的间距 */
+    justify-content: center; /* 水平居中 */
+    margin: 40px auto; /* 整个网格居中 */
+    padding: 10px;
+    max-width: 1200px; /* 限制最大宽度 */
+    width: 100%;
+}
+
+/* 卡片样式 */
+.card {
+    width: 160px; /* 调整卡片宽度 */
+    height: 240px; /* 调整卡片高度 */
+    perspective: 1000px; /* 3D 视角 */
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform: rotateY(180deg); /* 初始状态为背面朝上 */
+    transition: transform 0.6s ease;
+}
+
+.card.flipped .card-inner {
+    transform: rotateY(0deg); /* 翻转为正面 */
+}
+
+/* 卡片正反面 */
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+}
+
+.card-front {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-back {
+    background-color: #ff69b4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotateY(180deg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 按钮样式 */
+button {
+    padding: 15px 30px;
+    font-size: 1.5em;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    background-color: #ff69b4;
+    color: white;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+/* 倒计时 */
+#countdown-timer {
+    font-size: 2em;
+    margin: 20px 0;
+}
+
+
+#firework-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: background-color 0.8s ease;
+}
+
+#firework-container.celebrating {
+    background-color: #000 !important;
+}
+
+#fireworks {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent !important;
+    pointer-events: none;
+    z-index: 10000;
+}
+
+/* 修改按钮样式确保可点击 */
+#celebrate-button {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 30px;
+    font-size: 1.5em;
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 5px #999;
+    transition: all 0.3s ease;
+    z-index: 31000;
+}
+
+#celebrate-button:hover {
+    transform: scale(1.1);
+}
+
+#celebrate-button:active {
+    box-shadow: 0 2px #666;
+    transform: translateX(-50%) translateY(3px);
+}
+
+/* 文案容器样式 */
+#romantic-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 30000;
+    pointer-events: none;
+    background: transparent;
+    overflow: hidden;
+}
+
+/* 公共文案样式 */
+.message-text {
+    position: absolute;
+    opacity: 0;
+    margin: 0;
+    padding: 10px 20px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    white-space: nowrap; /* 防止换行 */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    will-change: transform, opacity;
+}
+
+/* 前八条文案样式 */
+#romantic-message .message-text:nth-child(-n+8) {
+    font-size: 1.2em; /* 字体稍大 */
+    color: #ffffff; /* 颜色更亮 */
+}
+
+/* 为前八条文案增加垂直间距 */
+#romantic-message .message-text:nth-child(1) { top: 10px; left: 10px; }
+#romantic-message .message-text:nth-child(2) { top: 40px; left: 10px; }
+#romantic-message .message-text:nth-child(3) { top: 70px; left: 10px; }
+#romantic-message .message-text:nth-child(4) { top: 100px; left: 10px; }
+#romantic-message .message-text:nth-child(5) { top: 130px; left: 10px; }
+#romantic-message .message-text:nth-child(6) { top: 160px; left: 10px; }
+#romantic-message .message-text:nth-child(7) { top: 190px; left: 10px; }
+#romantic-message .message-text:nth-child(8) { top: 220px; left: 10px; }
+
+/* 后七条文案样式 */
+#romantic-message .message-text:nth-child(n+9) {
+    font-size: 2.5em;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    /* 设置单色 */
+    color: #ff6ec4; /* 默认颜色，后续通过 nth-child 覆盖 */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* 为后七条文案赋予不同颜色 */
+#romantic-message .message-text:nth-child(9)  { color: #ff6ec4; }
+#romantic-message .message-text:nth-child(10) { color: #7873f5; }
+#romantic-message .message-text:nth-child(11) { color: #f3a683; }
+#romantic-message .message-text:nth-child(12) { color: #3dc1d3; }
+#romantic-message .message-text:nth-child(13) { color: #ff9ff3; }
+#romantic-message .message-text:nth-child(14) { color: #e77f67; }
+#romantic-message .message-text:nth-child(15) { color: #f8a5c2; }
+/* Slide-in 动画 */
+/* Slide-in 动画 */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+.slide-in {
+    animation: slideIn 0.5s forwards;
+}
+
+/* Slide-out 动画 */
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(20px) scale(0.8);
+    }
+}
+
+.slide-out {
+    animation: slideOut 0.5s forwards;
+}
+
+/* 后七条文案的弹入动画（无旋转） */
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    60% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* 调整后八条文案的淡出动画 */
+.pop-in {
+    animation: popIn 1s forwards;
+    opacity: 1;
+}
+
+.pop-in.fade-out {
+    animation: fadeOut 0.5s forwards; /* 不再滑动 */
+    opacity: 0;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+
+#firework-container.hidden {
+    display: none;
+}
+
+/* 游戏结束容器样式 */
+#game-over {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../assets/images/xiaoxinend.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+#game-over.hidden {
+    display: none;
+}
+
+#game-over h2 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#game-over #replay-game-end {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    background-color: #ff69b4;
+    color: white;
+    transition: transform 0.2s;
+}
+
+#game-over #replay-game-end:hover {
+    transform: scale(1.1);
+}
+
+/* 倒计时容器样式 */
+#countdown-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../assets/images/xiaoxinend.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+#countdown-container.hidden {
+    display: none;
+}
+
+#countdown-container h2 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#countdown-container #countdown-timer {
+    font-size: 2em;
+    margin: 20px 0;
+}
+
+#countdown-container button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    background-color: #ff69b4;
+    color: white;
+    transition: transform 0.2s;
+    margin-top: 20px;
+}
+
+#countdown-container button:hover {
+    transform: scale(1.1);
+}
+
+

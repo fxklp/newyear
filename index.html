@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>元旦祝福</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="libraries/animate.css">
+</head>
+<body>
+<div id="game-container" class="active">
+    <button id="start-game">开始游戏</button>
+    <div id="memory-game" class="hidden">
+        <div class="cards-grid">
+        </div>
+    </div>
+</div>
+
+<div id="countdown-container" class="hidden">
+    <h2>&nbsp;&nbsp;恭喜完成游戏！</h2>
+    <div id="countdown-timer">00天 00小时 00分钟 00秒</div>
+    <p>等待时间可以重玩游戏</p>
+    <button id="replay-game">重玩游戏</button>
+</div>
+
+<div id="firework-container" class="hidden">
+    <div id="fireworks"></div>
+    <button id="celebrate-button" class="three-d-button">庆祝</button>
+    <div id="romantic-message" class="hidden">
+        <div class="message-text">愿清风如你温柔，拂过岁月不留痕❤️</div>
+        <div class="message-text">往事如烟随风散，明日花开依旧暖❤️</div>
+        <div class="message-text">路一程梦一程，总有心灯为你点亮一程❤️</div>
+        <div class="message-text">我会陪你走过每一程❤️</div>
+        <div class="message-text">唯愿时光静好，岁岁年年共此时❤️</div>
+        <div class="message-text">唯愿月光如你，所念皆如愿❤️</div>
+        <div class="message-text">ʸᵒᵘ ᵃʳᵉ ᵐʸ ˢᵗᵃʳ.❤️</div>
+        <div class="message-text">于我而言，你是最好且唯一❤️</div>
+        <div class="message-text">✨ My Honey ✨</div>
+        <div class="message-text">🎆 愿2025如烟花般绚烂夺目 🎆</div>
+        <div class="message-text">🌟 愿所有的美好都能如约而至 🌟</div>
+        <div class="message-text">💫 愿你在新的一年福星高照 💫</div>
+        <div class="message-text">🎋 愿你所求皆所愿，所行化坦途 🎋</div>
+        <div class="message-text">💝 愿你平安喜乐，万事胜意 💝</div>
+        <div class="message-text">✨ 元旦快乐！❤️ ✨</div>
+    </div>
+</div>
+
+
+
+<div id="game-over" class="hidden">
+    <h2>游戏结束！</h2>
+    <button id="replay-game-end">重玩游戏</button>
+</div>
+
+<!-- 引入脚本 -->
+<script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
+<script src="scripts/countdown.js"></script>
+<script src="scripts/game.js"></script>
+<script src="scripts/firework.js"></script>
+</body>
+</html>
