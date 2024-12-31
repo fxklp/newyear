@@ -1,7 +1,7 @@
 // countdown.js
 let countdownInterval = null;
 let countdownStarted = false;
-let targetTime = new Date('2025-01-01T00:00:00').getTime();
+let targetTime = new Date('2024-12-31T18:18:00').getTime();
 let background2 = null;
 
 function countdownStart() {
